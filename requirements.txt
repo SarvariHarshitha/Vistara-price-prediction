@@ -1,5 +1,5 @@
 flask
 datetime
-pickle
+pickle5
 pandas
 numpy
