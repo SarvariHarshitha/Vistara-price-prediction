@@ -3,5 +3,5 @@ datetime
 pickle4
 pandas
 numpy
-scikit-learn
+scikit-learn==1.5.2
 gunicorn
