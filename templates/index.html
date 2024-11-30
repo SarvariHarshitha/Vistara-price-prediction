@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      /* nav */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: pink;
+    color: white;
+    font-family: "Poppins", sans-serif;
+  }
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    background-color: purple;
+  }
+  nav ul {
+    display: flex;
+    justify-content: center;
+  }
+  nav ul li {
+    list-style: none;
+    margin: 0 23px;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: gold;
+  }
+  nav ul li a:hover {
+    color: brown;
+  }
+
+/* FirstSection */
+ .firstSection{
+    background-image:url("static/images/HomeVistara.jpg");
+    width:100%;
+    height: 100vh;
+    align-items: center;
+ }
+ .firstSection h1{
+    /* background-color: red; */
+    font-size: 60px;
+    text-align: center;
+    padding:100px 0;
+    font-family: 'Roboto Slab',serif;
+
+  }
+  .purple {
+    color: rgb(103, 66, 137);
+  }
+
+  /* second Section */
+  .secondSection{
+    background-color: palevioletred;
+    color:white;
+  }
+
+  #about {
+    padding: 80px 0;
+    color: #ababab;
+  }
+  .result{
+    border:2px solid black;
+    color:white;
+    padding:10px;
+    width:400px;
+    height:50px;
+    background-color:purple;
+    text-align:centre;
+  }
+  #loading {
+    display: none;
+  }
+  .row {
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+  }
+  .about-col-1 img{
+    margin-left:50px;
+  }
+  .about-col-2 {
+    flex-basis: 50%;
+  }
+  .sub-title {
+    font-size: 40px;
+    font-weight: 600;
+    color: purple;
+    margin-bottom: 30px;
+  }
+
+  /* .about-col-2 form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  } */
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    width: 250px;
+    color:white;
+    font-size: 18px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 200px;
+    padding:10px;
+    border-radius: 10px;
+  }
+  form input[type="submit"]{
+    padding:10px;
+    border-radius: 5px;
+    background-color: purple;
+    color:white;
+    width:150px;
+  }
+
+  .thirdSection h1{
+    color:purple;
+    padding:20px;
+    font-size: 40px;
+    font-weight: 600;
+
+  }
+  .fourthSection{
+    background-color: palevioletred;
+    height:400px;
+  }
+  .fourthSection .container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .fourthSection h1{
+    color:purple;
+    padding:20px;
+    font-size: 40px;
+    font-weight: 600;
+
+  }
+
+  .fourthSection .users{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 40px;
+
+
+  }
+  .fourthSection .users .section_title{
+    color:gold;
+
+  }
+  footer{
+    background-color: purple;
+  }
+  .footer {
+    display: flex;
+    padding: 23px 112px;
+    justify-content: space-evenly;
+  }
+  .footer ul {
+    list-style-type: none;
+  }
+  footer .test-center {
+    text-align: center;
+    color: black;
+    padding: 12px 0;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+
+</style>
+    <title>Vistara|Airfare</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left">
+          <img src="static/images/Air-Vistara.png" width="200px" height="90px" />
+        </div>
+        <div class="red">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#prediction">Prediction</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#developer">Developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="firstSection">
+        <h1 class="Heading">
+          Welcome to the
+          <br />
+          <span class="purple">Vistara Price Prediction Platform</span>
+        </h1>
+      </section>
+      <section class="secondSection" id="prediction">
+        <div id="about">
+          <div class="row">
+            <div class="about-col-1">
+              <img src="static\images\ticket.jpg" width="500px" height="450px" />
+            </div>
+            <div class="about-col-2">
+              <h1 class="sub-title">Prediction</h1>
+              <form action="/pred" method="POST">
+                <div class="form-group">
+                  <label>Select the Date of Journey:</label>
+                  <input type="date" id="selectedDate" onchange="extractDay(); findDateDifference()" name="DOJ" /><br />
+                </div>
+                <div class="form-group">
+                <label>Select Button:</label>
+                <select id="flightcode" name="flightcode"></select>
+                </div>
+                <div class="form-group">
+                  <label>Day of the Journey:</label>
+                  <input type="text" id="dayField" name="Day" readonly /><br />
+                </div>
+                <div class="form-group">
+                  <label>Class Of Ticket:</label>
+                  <select name="class">
+                    <option value="1">Economy</option>
+                    <option value="2">Premium Economy</option>
+                    <option value="0">Business</option>
+                  </select><br />
+                </div>
+                <div class="form-group">
+                  <label>Select Source Airport:</label>
+                  <select name="sourceAirport">
+                    <option value="0">Ahmedabad</option>
+                    <option value="1">Bangalore</option>
+                    <option value="2">Chennai</option>
+                    <option value="3">Delhi</option>
+                    <option value="4">Hyderabad</option>
+                    <option value="5">Kolkata</option>
+                    <option value="6">Mumbai</option>
+                  </select><br />
+                </div>
+                <div class="form-group">
+                  <label>Select Destination Airport:</label>
+                  <select name="destinationAirport">
+                    <option value="0">Ahmedabad</option>
+                    <option value="1">Bangalore</option>
+                    <option value="2">Chennai</option>
+                    <option value="3">Delhi</option>
+                    <option value="4">Hyderabad</option>
+                    <option value="5">Kolkata</option>
+                    <option value="6">Mumbai</option>
+                  </select><br />
+                </div>
+                <div class="form-group">
+                  <label>Departure:</label>
+                  <select name="departureTime">
+                    <option value="1">6AM-12PM</option>
+                    <option value="0">12PM-6AM</option>
+                    <option value="2">AFTER 6PM</option>
+                    <option value="3">BEFORE 6AM</option>
+                  </select><br />
+                </div>
+                <div class="form-group">
+                  <label>Total No.of Stops:</label>
+                  <select name="totalStops">
+                    <option value="2">non stop</option>
+                    <option value="0">1-stop</option>
+                    <option value="1">2+-stop</option>
+                  </select><br />
+                </div>
+                <div class="form-group">
+                  <label>Arrival:</label>
+                  <select name="arrivalTime">
+                    <option value="1">6AM-12PM</option>
+                    <option value="0">12PM-6AM</option>
+                    <option value="2">AFTER 6PM</option>
+                    <option value="3">BEFORE 6AM</option>
+                  </select><br />
+                </div>
+                <div class="form-group">
+                  <label>Duration:</label>
+                  <input type="text" name="duration" /><br />
+                </div>
+                <div class="form-group">
+                  <label>Number of Days left:</label>
+                  <input type="text" id="dayDifference" name="daysleft" readonly />
+                </div>
+                <input type="submit" value="Submit" />
+                
+              </form>
+              <br>
+              <br>
+              <div class="result">Prediction: {{result}} <div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="thirdSection" id="analytics">
+        <h1>Analytics and Visualization</h1>
+        <iframe title="Report Section" width="100%" height="900px" src="https://app.powerbi.com/view?r=eyJrIjoiYWYyYjUxZmYtZTIzNi00MjI4LWIwMzEtMjJhNjc4ZGEzNDVjIiwidCI6IjFmMzVmZWVkLWE1ZWQtNDM5ZS04YWVhLTE1MmNlNzFlMGNmOSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+      </section>
+      <section class="fourthSection" id="developer">
+        <h1>Developers</h1>
+        <div class="container">
+          <div class="duo">
+            <div class="users">
+              <h2 class="section_title">
+                <span>Konda Sarvari Harshitha</span>
+              </h2>
+              <p>
+                <i class="fa-solid fa-paper-plane"></i>
+                harshithakonda21@gmail.com
+              </p>
+              <p><i class="fa-solid fa-square-phone"></i> +91-9063075426</p>
+              <div class="social-icons">
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="users">
+              <h2 class="section_title">
+                <span>M.D.Sai Sahitya</span>
+              </h2>
+              <p>
+                <i class="fa-solid fa-paper-plane"></i>
+                sahityameenapalli@gmail.com
+              </p>
+              <p><i class="fa-solid fa-square-phone"></i> +91-8885198851</p>
+              <div class="social-icons">
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="duo">
+            <div class="users">
+              <h2 class="section_title">
+                <span>Adithi Vemula</span>
+              </h2>
+              <p>
+                <i class="fa-solid fa-paper-plane"></i> padmabhusan710@gmail.com
+              </p>
+              <p><i class="fa-solid fa-square-phone"></i> +91-9676771402</p>
+              <div class="social-icons">
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="users">
+              <h2 class="section_title">
+                <span>Bheemavarapu Pujitha</span>
+              </h2>
+              <p>
+                <i class="fa-solid fa-paper-plane"></i>
+                pujiii.1203@gmail.com
+              </p>
+              <p><i class="fa-solid fa-square-phone"></i> +91-781592639</p>
+              <div class="social-icons">
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="duo">
+            <div class="users">
+              <h2 class="section_title">
+                <span>Y. Pavan Mani Sankar</span>
+              </h2>
+              <p>
+                <i class="fa-solid fa-paper-plane"></i>
+                pavanyadavalli02@gmail.com
+              </p>
+              <p><i class="fa-solid fa-square-phone"></i> +91-9381597886</p>
+              <div class="social-icons">
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="users">
+              <h2 class="section_title">
+                <span>Patakamuri Nimitha</span>
+              </h2>
+              <p>
+                <i class="fa-solid fa-paper-plane"></i>
+                nimithapatakamuri2004@gmail.com
+              </p>
+              <p><i class="fa-solid fa-square-phone"></i> +91-7731029999</p>
+              <div class="social-icons">
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer">
+          <div class="footer-first">
+            <h3>Vistara Price Prediction</h3>
+          </div>
+          <div class="footer-second">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="#prediction">Prediction</a></li>
+              <li><a href="#analytics">Analytics</a></li>
+              <li><a href="#developer">Developers</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="test-center">
+          Copyright &copy;Sarvari Harshitha Konda | All rights reserved
+        </div>
+      </footer>
+    </main>
+    <script>
+      function extractDay() {
+        var selectedDate = document.getElementById("selectedDate").value;
+        var dayField = document.getElementById("dayField");
+    
+        // Extracting the day name from the selected date
+        var date = new Date(selectedDate);
+        var options = { weekday: 'long' };
+        var dayName = new Intl.DateTimeFormat('en-US', options).format(date);
+    
+        // Define the order of days
+        var dayOrder = {
+            'Friday': 0,
+            'Monday': 1,
+            'Saturday': 2,
+            'Sunday': 3,
+            'Thursday': 4,
+            'Tuesday': 5,
+            'Wednesday': 6
+        };
+    
+        // Get the index of the day
+        var dayIndex = dayOrder[dayName];
+    
+        // Set the day index in the text field
+        dayField.value = dayIndex.toString();
+    }
+    
+    
+    function findDateDifference() {
+        var selectedDate = document.getElementById("selectedDate").value;
+        var presentDate = new Date(); // Current date
+    
+        // Convert the selected date to a Date object
+        var date = new Date(selectedDate);
+    
+        // Calculate the difference in time (milliseconds) between the two dates
+        var timeDifference = date.getTime() - presentDate.getTime();
+    
+        // Convert time difference from milliseconds to days
+        var dayDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    
+        var dayDifferenceField = document.getElementById("dayDifference");
+    
+        // Set the day difference in the text field
+        dayDifferenceField.value = dayDifference;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var selectButton = document.getElementById("flightcode");
+      var options = [
+          'UK-507', 'UK-508', 'UK-521', 'UK-543', 'UK-545', 'UK-551', 'UK-553', 'UK-613',
+          'UK-621', 'UK-625', 'UK-627', 'UK-635', 'UK-637', 'UK-651', 'UK-653', 'UK-657',
+          'UK-673', 'UK-705', 'UK-706', 'UK-707', 'UK-708', 'UK-720', 'UK-721', 'UK-727',
+          'UK-737', 'UK-738', 'UK-741', 'UK-747', 'UK-755', 'UK-771', 'UK-772', 'UK-773',
+          'UK-774', 'UK-775', 'UK-776', 'UK-778', 'UK-781', 'UK-785', 'UK-787', 'UK-801',
+          // Add the remaining values as needed
+      ];
+  
+      // Populate the select dropdown with options
+      options.forEach(function(value, index) {
+          var option = document.createElement("option");
+          option.value = index;
+          option.text = value;
+          selectButton.add(option);
+      });
+  });
+  
+  
+  </script>
+    <script>(function(w, d) { w.CollectId = "654f5e23ed8d821ab106cd96"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
+  </body>
+</html>
