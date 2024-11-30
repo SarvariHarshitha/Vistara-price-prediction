@@ -304,7 +304,7 @@
                   </select><br />
                 </div>
                 <div class="form-group">
-                  <label>Duration:</label>
+                  <label>Duration(only in whole numbers):</label>
                   <input type="text" name="duration" /><br />
                 </div>
                 <div class="form-group">
@@ -316,7 +316,13 @@
               </form>
               <br>
               <br>
-              <div class="result">Prediction: {{result}} <div>
+              <div class="result">
+                {% if "An error occurred" in result %}
+                    <script>alert("{{ result }}");</script>
+                {% else %}
+                    <p>Prediction{{ result }}</p>
+                {% endif %}
+              <div>
 
             </div>
           </div>
